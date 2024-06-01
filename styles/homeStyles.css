@@ -1,0 +1,70 @@
+::selection {
+  background-color: hsla(0, 0%, 100%, 0.226);
+  color: #352e28;
+}
+
+body {
+  background-color: black;
+}
+
+.PacificoFontFamily {
+  font-family: Pacifico;
+}
+
+.fs-50 {
+  font-size: 50px;
+}
+
+.w-20 {
+  width: 260px;
+}
+
+.w-30{
+  width: 200px;
+}
+
+.h-20 {
+  height: 20px;
+  transition: all 0.5s;
+}
+
+.bottom-5 {
+  bottom: 10px;
+}
+
+.title-com:hover .ovrelay-title {
+  height: 40px;
+}
+
+.horizontal-dash-line {
+  border: 1px dashed white;
+  width: 90%;
+  margin: auto;
+  margin-block: 50px;
+}
+
+.linearGradientText {
+  background: linear-gradient(to right, #ffc107, #fff700, #f9e4a5, #ffffff);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  text-align: center;
+  font-size: 25px;
+}
+
+input[type="text"]:focus,
+.uneditable-input:focus {   
+  border-color: #fff700;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #fff700;
+  outline: 0 none;
+}
+
+.table>:not(caption)>*>* {
+  text-align: center;
+}
+
+.circleColor{
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+  background: blue;
+}
