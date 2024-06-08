@@ -1,17 +1,18 @@
-
-const SignUpBtn = document.getElementById("SignUpBtn");
-const SignUpNameInput = document.getElementById("SignUpName");
-const SignUpEmailInput = document.getElementById("SignUpEmail");
-const SignUpPaaswordInput = document.getElementById("SignUpPass");
+const LoginBtn = document.getElementById("loginBtn");
+const LoginEmailInput = document.getElementById("loginEmail");
+const LoginPaaswordInput = document.getElementById("loginPass");
 
 const errorMsg = document.getElementById("error-Msg");
-const ExistErrorMsg = document.getElementById("exist-error-Msg");
+const notExistErrorMsg = document.getElementById("not-exist-error-Msg");
 const successMsg = document.getElementById("success-Msg");
 
 var Accounts;
 
 if (localStorage.getItem("@Account")) {
-  console.log("items in local storag", JSON.parse(localStorage.getItem("@Account")));
+  console.log(
+    "items in local storag",
+    JSON.parse(localStorage.getItem("@Account"))
+  );
   Accounts = JSON.parse(localStorage.getItem("@Account"));
   console.log(Accounts);
 } else {
@@ -19,36 +20,33 @@ if (localStorage.getItem("@Account")) {
   Accounts = [];
 }
 
-SignUpBtn.addEventListener("click", SignUp);
+LoginBtn.addEventListener("click", Login);
 
-function SignUp() {
-  if (
-    Validate(SignUpNameInput) &&
-    Validate(SignUpEmailInput) &&
-    Validate(SignUpPaaswordInput)
-  ) {
+function Login() {
+  if (Validate(LoginEmailInput) && Validate(LoginPaaswordInput)) {
     const Data = {
-      name: SignUpNameInput.value,
-      email: SignUpEmailInput.value,
-      pass: SignUpPaaswordInput.value,
+      email: LoginEmailInput.value,
+      pass: LoginPaaswordInput.value,
     };
-    // remove error
     DiaAppearValidateErroeMessage();
-
-    const ExistEmail = Accounts.find(
-      (data) => data?.email === SignUpEmailInput.value
+    const CorrectData = Accounts.find(
+      (data) =>
+        data?.email === LoginEmailInput.value &&
+        data?.pass === LoginPaaswordInput.value
     );
-    if (ExistEmail) {
-      console.log("exist");
-      DiaAppearSuccessMessage();
-      AppearExistEmailMessage();
-    } else {
-      Accounts.push(Data);
-      localStorage.setItem("@Account", JSON.stringify(Accounts));
+
+    if (CorrectData) {
       DiaAppearExistEmailMessage();
+      DiaAppearValidateErroeMessage();
       AppearSuccessMessage();
+      console.log(CorrectData);
+      localStorage.setItem("@ActiveEmail", JSON.stringify(CorrectData));
+      window.location.href = "home.html";
+    } else {
+      AppearExistEmailMessage();
     }
   } else {
+    DiaAppearExistEmailMessage();
     DiaAppearSuccessMessage();
     AppearValidateErroeMessage();
   }
@@ -74,13 +72,13 @@ function DiaAppearValidateErroeMessage(element) {
 }
 
 function AppearExistEmailMessage(element) {
-  ExistErrorMsg.classList.remove("d-none");
-  ExistErrorMsg.classList.add("d-flex");
+  notExistErrorMsg.classList.remove("d-none");
+  notExistErrorMsg.classList.add("d-flex");
 }
 
 function DiaAppearExistEmailMessage(element) {
-  ExistErrorMsg.classList.remove("d-flex");
-  ExistErrorMsg.classList.add("d-none");
+  notExistErrorMsg.classList.remove("d-flex");
+  notExistErrorMsg.classList.add("d-none");
 }
 
 function AppearSuccessMessage(element) {

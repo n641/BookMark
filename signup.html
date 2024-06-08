@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Login</title>
+    <title>BookMark</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,46 +16,53 @@
     <div class="w-60 mt-5 mx-auto py-5 text-center login-card">
       <h1 class="text-info">Smart Login System</h1>
       <div
+        id="container-form"
         class="d-flex flex-column align-items-center mt-5 mb-4 container gap-4"
       >
         <input
-          id="loginEmail"
+          id="SignUpName"
+          type="text"
+          class="form-control bg-transparent w-90 text-light rounded-2"
+          aria-describedby="basic-addon2"
+          placeholder="Enter your name"
+        />
+        <input
+          id="SignUpEmail"
           type="email"
           class="form-control bg-transparent w-90 text-light rounded-2"
           aria-describedby="basic-addon2"
-          placeholder="Enter your Email"
+          placeholder="Enter your email"
         />
         <input
-          id="loginPass"
+          id="SignUpPass"
           type="password"
           class="form-control bg-transparent w-90 text-light rounded-2"
           aria-describedby="basic-addon2"
           placeholder="Enter your Password"
         />
+
         <h6 id="error-Msg" class="text-danger d-none">
           All inputs is required
         </h6>
         <h6 id="success-Msg" class="text-success d-none">Success</h6>
-
-        <h6 id="not-exist-error-Msg" class="text-danger d-none">Not Found This Email</h6>
+        <h6 id="exist-error-Msg" class="text-danger d-none">This Email already Exist</h6>
 
         <button
-          id="loginBtn"
+          id="SignUpBtn"
           type="button"
           class="btn btn-outline-primary w-90"
-          href="home.html"
         >
-          Login
+          SignUp
         </button>
       </div>
 
       <h6 class="text-light">
         Don’t have an account?
-        <a class="text-reset" href="signup.html">SignUp</a>
+        <a class="text-reset" href="index.html">SignIn</a>
       </h6>
     </div>
 
     <script src="./js/bootstrap.bundle.min.js"></script>
-    <script src="login.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
